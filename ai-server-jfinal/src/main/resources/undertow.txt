@@ -1,0 +1,9 @@
+undertow.devMode=true
+undertow.port=10045
+undertow.host=0.0.0.0
+undertow.contextPath=/ai-server
+undertow.resourcePath = classpath:
+#jdbc-mysql
+#jdbc.url=jdbc:mysql://localhost/alit_url_manager
+#jdbc.user=root
+#jdbc.pswd=root
