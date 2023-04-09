@@ -1,7 +1,6 @@
 package com.litongjava.jfinal.web.service;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,6 +23,7 @@ import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
+import sun.plugin2.util.PojoUtil;
 
 public class PaddleOcrService {
   private static String detModelUrls = "https://resources.djl.ai/test-models/paddleOCR/mobile/det_db.zip";
@@ -51,7 +51,11 @@ public class PaddleOcrService {
     @SuppressWarnings("deprecation")
     Image src = ImageFactory.getInstance().fromUrl(file.toURL());
     return index(src);
-
+  }
+  public DetectedObjects index(byte[] fileData) throws IOException, TranslateException, ModelNotFoundException, MalformedModelException {
+    ByteArrayInputStream is = new ByteArrayInputStream(fileData);
+    Image src = ImageFactory.getInstance().fromInputStream(is);
+    return index(src);
   }
 
   public DetectedObjects index(Image src)
@@ -177,4 +181,6 @@ public class PaddleOcrService {
     double newHeight = newY + height > 1 ? 1 - newY : height;
     return new double[] { newX, newY, newWidth, newHeight };
   }
+
+
 }
