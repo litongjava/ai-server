@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.controller;
+package com.litongjava.ai.server.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import com.jfinal.aop.Aop;
 import com.jfinal.core.Controller;
 import com.jfinal.core.Path;
 import com.jfinal.upload.UploadFile;
-import com.litongjava.jfinal.web.service.PaddleOcrService;
+import com.litongjava.ai.server.service.PaddleOcrService;
 
 import ai.djl.MalformedModelException;
 import ai.djl.modality.cv.output.DetectedObjects;

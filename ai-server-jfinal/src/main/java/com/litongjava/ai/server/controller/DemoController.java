@@ -1,8 +1,8 @@
-package com.litongjava.jfinal.web.controller;
+package com.litongjava.ai.server.controller;
 
 import com.jfinal.core.Controller;
 import com.jfinal.core.Path;
-import com.litongjava.jfinal.web.model.User;
+import com.litongjava.ai.server.model.User;
 
 import lombok.extern.slf4j.Slf4j;
 

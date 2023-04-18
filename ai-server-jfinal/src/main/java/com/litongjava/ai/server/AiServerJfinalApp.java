@@ -1,7 +1,7 @@
-package com.litongjava.jfinal.web;
+package com.litongjava.ai.server;
 
 import com.jfinal.server.undertow.UndertowServer;
-import com.litongjava.jfinal.web.config.BaseConfig;
+import com.litongjava.ai.server.config.BaseConfig;
 
 public class AiServerJfinalApp {
   public static void main(String[] args) {

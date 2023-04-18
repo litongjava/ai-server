@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.controller;
+package com.litongjava.ai.server.controller;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.service;
+package com.litongjava.ai.server.service;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,11 +1,11 @@
-package com.litongjava.jfinal.web.controller;
+package com.litongjava.ai.server.controller;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.jfinal.core.Controller;
 import com.jfinal.core.Path;
 import com.jfinal.kit.PathKit;
-import com.litongjava.jfinal.web.utils.PathUtils;
+import com.litongjava.ai.server.utils.PathUtils;
 
 @Path("path")
 public class PathController extends Controller {

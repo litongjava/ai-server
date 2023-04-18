@@ -4,7 +4,7 @@ import ai.djl.MalformedModelException;
 import ai.djl.modality.cv.output.DetectedObjects;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.translate.TranslateException;
-import com.litongjava.jfinal.web.service.PaddleOcrService;
+import com.litongjava.ai.server.service.PaddleOcrService;
 import org.tio.http.common.HttpRequest;
 import org.tio.http.common.HttpResponse;
 import org.tio.http.common.UploadFile;

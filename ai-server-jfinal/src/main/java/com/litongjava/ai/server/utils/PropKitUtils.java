@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.utils;
+package com.litongjava.ai.server.utils;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 

@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.model;
+package com.litongjava.ai.server.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

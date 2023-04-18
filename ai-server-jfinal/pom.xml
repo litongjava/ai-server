@@ -89,7 +89,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>2.7.4</version>
         <configuration>
-          <mainClass>com.litongjava.jfinal.web.AiServerJfinalApp</mainClass>
+          <mainClass>com.litongjava.ai.server.AiServerJfinalApp</mainClass>
         </configuration>
         <!-- 设置执行目标 -->
         <executions>

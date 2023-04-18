@@ -1,4 +1,4 @@
-package com.litongjava.jfinal.web.utils;
+package com.litongjava.ai.server.utils;
 
 import java.awt.image.BufferedImage;
 
