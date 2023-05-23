@@ -23,7 +23,7 @@ import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ModelNotFoundException;
 import ai.djl.repository.zoo.ZooModel;
 import ai.djl.translate.TranslateException;
-import sun.plugin2.util.PojoUtil;
+//import sun.plugin2.util.PojoUtil;
 
 public class PaddleOcrService {
   private static String detModelUrls = "https://resources.djl.ai/test-models/paddleOCR/mobile/det_db.zip";
