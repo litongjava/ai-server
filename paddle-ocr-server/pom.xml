@@ -85,7 +85,7 @@
         </plugins>
       </build>
     </profile>
-    <!-- 生产环境 -->
+    <!-- assembly -->
     <profile>
       <id>assembly</id>
       <dependencies>
