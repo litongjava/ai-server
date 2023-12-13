@@ -3,6 +3,7 @@ package com.litongjava.ai.server.padddle.ocr.controller;
 import java.net.URL;
 
 import com.litongjava.ai.djl.paddle.ocr.v4.PaddlePaddleOCRV4;
+import com.litongjava.tio.boot.annotation.EnableCORS;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
 import com.litongjava.tio.http.common.UploadFile;
@@ -12,6 +13,7 @@ import com.litongjava.tio.utils.resp.RespVo;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 
+@EnableCORS
 @RequestPath("/paddle/ocr")
 public class OcrController {
 
