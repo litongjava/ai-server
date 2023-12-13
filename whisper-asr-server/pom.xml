@@ -5,7 +5,7 @@
     <artifactId>ai-server</artifactId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>paddle-ocr-server</artifactId>
+  <artifactId>paddle-asr-server</artifactId>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
