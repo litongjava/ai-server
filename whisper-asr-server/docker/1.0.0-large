@@ -1,0 +1,10 @@
+FROM openjdk:11-jdk-slim
+
+WORKDIR /app
+
+COPY ./ai-server-tio-boot/target/ai-server-tio-boot-1.0.jar /app/ai-server-tio-boot-1.0.jar
+
+COPY models/ggml-large.bin /root/.cache/whisper/ggml-large.bin
+
+CMD ["java", "-jar", "ai-server-tio-boot-1.0.jar", "--mode=prod","--model.name=ggml-large.bin"]
+
