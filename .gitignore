@@ -135,3 +135,4 @@ package-lock.json
 *.wav
 *.mp3
 *.onnx
+*.zip
