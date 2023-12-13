@@ -25,6 +25,7 @@ import ai.djl.ndarray.NDList;
 import ai.djl.ndarray.NDManager;
 import ai.djl.opencv.OpenCVImageFactory;
 import ai.djl.repository.zoo.Criteria;
+import ai.djl.repository.zoo.Criteria.Builder;
 import ai.djl.training.util.ProgressBar;
 import ai.djl.translate.TranslateException;
 import cn.hutool.core.io.resource.ResourceUtil;
@@ -40,18 +41,28 @@ public final class OcrV4Recognition {
    * @return
    */
   public Criteria<Image, String> chRecCriteria() {
-    URL resource = ResourceUtil.getResource("models/ch_PP-OCRv4_rec_infer/inference.onnx");
+    URL resource = ResourceUtil.getResource("models/ch_PP-OCRv4_rec_infer.zip");
+    System.out.println("resource:" + resource);
     Path modelPath = null;
     try {
       modelPath = Paths.get(resource.toURI());
-    } catch (URISyntaxException e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
     }
-    Criteria<Image, String> criteria = Criteria.builder().optEngine("OnnxRuntime")
+
+    Builder<Image, String> builder = Criteria.builder().optEngine("OnnxRuntime")
         // .optModelName("inference")
-        .setTypes(Image.class, String.class).optModelPath(modelPath).optProgress(new ProgressBar())
-        .optTranslator(new PpWordRecTranslator(new ConcurrentHashMap<String, String>())).build();
-    return criteria;
+        .setTypes(Image.class, String.class).optProgress(new ProgressBar())
+        .optTranslator(new PpWordRecTranslator(new ConcurrentHashMap<String, String>()));
+
+    if (modelPath != null) {
+      System.out.println("load from file");
+      builder.optModelPath(modelPath).optModelName("ch_PP-OCRv4_det_infer");
+    } else {
+      System.out.println("load from jar");
+      builder.optModelUrls("jar:///models/ch_PP-OCRv4_rec_infer.zip");
+    }
+    return builder.build();
   }
 
   /**
