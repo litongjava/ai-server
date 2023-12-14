@@ -38,7 +38,7 @@ The default loaded model is `/root/.cache/whisper/ggml-base.en.bin`
 
 specify the model name
 ```
-java -jar ai-server-tio-boot/target/ai-server-tio-boot-1.0.jar --mode=pord --model.name=ggml-large.bin
+java -jar whisper-asr-server/target/whisper-asr-server-1.0.0.jar --model.name=ggml-large.bin
 ```
 
 ### test
@@ -52,13 +52,13 @@ curl http://localhost:10046/asr/test
 build
 
 ```
-docker build -f docker/1.0.0-base.en -t litongjava/ai-server:1.0.1-base.en .
+docker build -f docker/1.0.0-base.en -t litongjava/whisper-asr-server:1.0.0-base.en .
 ```
 
 run
 
 ```
-docker run -dit -p 10046:10046 litongjava/ai-server:1.0.1-base.en
+docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.0-base.en
 ```
 
 test
@@ -68,9 +68,9 @@ curl -v http://localhost:10046/asr/test
 ```
 build large
 ```
-docker build -f docker/1.0.0-large -t litongjava/ai-server:1.0.1-large .
+docker build -f docker/1.0.0-large -t litongjava/whisper-asr-server:1.0.0-large .
 ```
 
 ```
-docker run -dit -p 10046:10046 litongjava/ai-server:1.0.1-large
+docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.0-large
 ```
