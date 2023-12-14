@@ -27,11 +27,11 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 #build jar
 mvn clean install -DskipTests -Pdevelopment
-mvn clean package -DskipTests -Pproduction -pl ai-server-tio-boot
+mvn clean package -DskipTests -Pproduction -pl whisper-asr-server
 ```
 ### run
 ```
-java -jar ai-server-tio-boot/target/ai-server-tio-boot-1.0.jar --mode=pord
+java -jar whisper-asr-server/target/ai-server-tio-boot-1.0.jar --mode=pord
 ```
 The default loaded model is `/root/.cache/whisper/ggml-base.en.bin`
 
