@@ -58,7 +58,7 @@ docker build -f docker/1.0.0-base.en -t litongjava/whisper-asr-server:1.0.0-base
 run
 
 ```
-docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.0-base.en
+docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.0-base.en
 ```
 
 test
