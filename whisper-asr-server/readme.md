@@ -31,7 +31,7 @@ mvn clean package -DskipTests -Pproduction -pl whisper-asr-server
 ```
 ### run
 ```
-java -jar whisper-asr-server/target/ai-server-tio-boot-1.0.jar --mode=pord
+java -jar whisper-asr-server/target/whisper-asr-server-1.0.0.jar
 ```
 The default loaded model is `/root/.cache/whisper/ggml-base.en.bin`
 
