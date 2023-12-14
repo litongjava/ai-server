@@ -42,5 +42,5 @@ docker build -t litongjava/paddle-ocr-server:1.0.0 .
 ```
 ### run
 ```
-docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server:1.0.0
+docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server:1.0.1
 ```
