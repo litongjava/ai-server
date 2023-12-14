@@ -1,4 +1,15 @@
-## paddle-ocr-server
+# paddle-ocr-server
+
+
+## 简介
+
+基于java语言的开箱即用的ocr识别服务,用到的框架和技术
+- tio-boot
+- djl
+- opencv
+- pytorch
+- onnx
+- paddle-ocr
 
 ## 接口文档
 
