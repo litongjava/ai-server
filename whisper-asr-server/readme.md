@@ -53,6 +53,7 @@ build
 
 ```
 docker build -f docker/1.0.0-base.en -t litongjava/whisper-asr-server:1.0.0-base.en .
+docker push litongjava/whisper-asr-server:1.0.0-base.en
 ```
 
 run
@@ -64,7 +65,7 @@ docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.0-base.en
 test
 
 ```
-curl -v http://localhost:10046/asr/test
+curl -v http://localhost:8080/whispser/asr/test
 ```
 build large
 ```
