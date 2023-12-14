@@ -38,9 +38,10 @@ curl --location --request POST 'http://localhost/paddle/ocr/rec' \
 ### build
 ```
 mvn package -DskipTests -Pproduction
-docker build -t litongjava/paddle-ocr-server:1.0.0 .
+docker build -t litongjava/paddle-ocr-server:1.0.1 .
+docker tag litongjava/paddle-ocr-server:1.0.1 litongjava/paddle-ocr-server
 ```
 ### run
 ```
-docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server:1.0.1
+docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server
 ```
