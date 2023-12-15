@@ -10,7 +10,23 @@
 - pytorch
 - onnx
 - paddle-ocr
-
+## How to build
+```
+git clone https://github.com/litongjava/ai-server.git
+or
+#git clone https://gitee.com/ppnt/ai-server.git
+mvn install -DskipTests
+```
+whisper-asr-service会构建失败,不用理会,因为 whisper-asr-service依赖jdk 11,paddle-ocr-server并不依赖whisper-asr-service,保证paddle-ocr-service构建成功即可
+build paddle-ocr-server
+```
+cd paddle-ocr-server
+mvn package -DskipTests -Pproduction
+```
+run
+```
+java -jar target/paddle-ocr-server-1.0.1.jar
+```
 ## 接口文档
 
 ### 在线文档地址
