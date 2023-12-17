@@ -32,6 +32,7 @@ java -jar paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
 ### 在线文档地址
 https://apifox.com/apidoc/shared-98cc5675-f1a3-4250-a940-cfe060854ef4
 #### 测试接口
+测试接口不需要上传文件,使用程序自带的文件进行识别,用于测试环境安装是否成功
 访问地址:http://localhost/paddle/ocr/test
 返回数据:
 ```
