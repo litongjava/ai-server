@@ -7,7 +7,7 @@ services:
     props:
       region: cn-hangzhou
       service:
-        name: serverless-devs-application
+        name: ai-server
       function:
         name: paddle-ocr-server
         description: Initialize

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.litongjava</groupId>
-    <artifactId>ai-server</artifactId>
+    <artifactId>paddle-ocr</artifactId>
     <version>1.0.0</version>
   </parent>
   <artifactId>paddle-ocr-server</artifactId>

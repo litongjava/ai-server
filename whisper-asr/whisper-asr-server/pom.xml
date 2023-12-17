@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.litongjava</groupId>
-    <artifactId>ai-server</artifactId>
+    <artifactId>whisper-asr</artifactId>
     <version>1.0.0</version>
   </parent>
   <artifactId>whisper-asr-server</artifactId>
