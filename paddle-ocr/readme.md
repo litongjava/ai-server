@@ -27,7 +27,7 @@ mvn package -DskipTests -Pproduction
 ```
 run
 ```
-java -jar paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
+java -jar java -jar paddle-ocr/paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
 ```
 ## 接口文档
 

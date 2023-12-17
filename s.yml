@@ -7,15 +7,19 @@ services:
     props:
       region: cn-hangzhou
       service:
-        name: ai-server
+        name: service-ocr
       function:
-        name: paddle-ocr-server
+        name: func-ocr
         description: Initialize
         runtime: custom
         environmentVariables:
+          PATH: >-
+            /opt/java11/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin:/opt/bin:/code:/code/bin
           LD_LIBRARY_PATH: >-
             /code:/code/lib:/usr/local/lib:/opt/lib:/opt/php8.1/lib:/opt/php8.0/lib:/opt/php7.2/lib
-          JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+          JAVA_HOME: /opt/java11
+        layers:
+          - acs:fc:cn-hangzhou:official:layers/Java11/versions/2
         memorySize: 128
         cpu: 0.05
         timeout: 60
@@ -27,7 +31,9 @@ services:
             - java
           args:
             - '-jar'
-            - paddle-ocr/paddle-ocr-server/paddle-ocr-server-1.0.1.jar
+            - java
+            - '-jar'
+            - paddle-ocr/paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
       triggers:
         - name: httpTrigger
           type: http
