@@ -5,9 +5,7 @@
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <modules>
-    <module>paddle-ocr-server</module>
-    <module>paddle-ocr-service</module>
-    <module>whisper-asr-server</module>
-    <module>whisper-asr-service</module>
+    <module>paddle-ocr</module>
+    <module>whisper-asr</module>
   </modules>
 </project>
