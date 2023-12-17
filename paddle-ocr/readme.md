@@ -91,5 +91,10 @@ docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server
 - 函数名称 ocr
 - web server模式 是
 - 请求处理程序类型 处理 Http请求
-- 镜像 选择刚才推送的镜像
+- 镜像 选择刚才推送的镜像 registry-vpc.cn-hangzhou.aliyuncs.com/litongjava/paddle-ocr-server:latest
+- 监听端口 80
+- 是否使用GPU 不使用GPU
+- 规格方案 默认即可
+- 禁用公网访问 URL 否
 - 点击部署
+- 不成成功过后获取地址访问测试即可
