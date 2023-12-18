@@ -23,9 +23,7 @@ public class OcrServer {
       long start = System.currentTimeMillis();
       TioApplication.run(OcrServer.class, args);
       long end = System.currentTimeMillis();
-      PaddlePaddleOCRV4.INSTANCE.init();
       System.out.println("started:" + (end - start) + "(ms)");
-
     }
   }
 
