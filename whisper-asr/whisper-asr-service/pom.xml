@@ -8,15 +8,15 @@
   <artifactId>whisper-asr-service</artifactId>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <lombok.version>1.18.30</lombok.version>
     <logback.version>1.2.3</logback.version>
     <hutool.version>5.8.11</hutool.version>
-    <whisper.jni.version>1.5.1</whisper.jni.version>
+    <whisper.jni.version>1.5.1-java8</whisper.jni.version>
     <mp3spi.version>1.9.5.4</mp3spi.version>
-    <jfinal.aop.version>1.1.0</jfinal.aop.version>
+    <jfinal.aop.version>1.1.2</jfinal.aop.version>
   </properties>
   <dependencies>
     <dependency>

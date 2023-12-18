@@ -97,4 +97,4 @@ docker run --name ocr_server -dit -p 8080:80 litongjava/paddle-ocr-server
 - 规格方案 默认即可
 - 禁用公网访问 URL 否
 - 点击部署
-- 不成成功过后获取地址访问测试即可
+- 部署成功过后获取地址访问测试即可
