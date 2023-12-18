@@ -17,7 +17,7 @@ import cn.hutool.core.io.resource.ResourceUtil;
 @EnableCORS
 @Controller
 @RequestPath("/paddle/ocr")
-public class OcrController {
+public class PaddleOcrController {
 
   @RequestPath(value = "/rec")
   public HttpResponse index(UploadFile file, String url, HttpRequest request) throws Exception {
