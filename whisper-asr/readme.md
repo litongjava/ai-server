@@ -41,6 +41,7 @@ outputType: default
 |» file|body|string(binary)| yes |上传的音频文件|
 |» inputType|body|string| no |上传的音频格式wav和mp3|
 |» outputType|body|string| no |返回的文本格式,支持default,irc,vtt,srt|
+|» outputFormat|body|string| no |返回的数据格式,输出的格式,默认是json,如果需要字幕数据输出txt|
 
 > Response Examples
 
