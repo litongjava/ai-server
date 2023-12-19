@@ -3,7 +3,7 @@ package com.litongjava.aio.server.tio.controller;
 import com.litongjava.jfinal.aop.Aop;
 import com.litongjava.jfinal.aop.annotation.Controller;
 import com.litongjava.tio.boot.annotation.EnableCORS;
-import com.litongjava.tio.boot.context.Enviorment;
+import com.litongjava.tio.boot.utils.Enviorment;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
 import com.litongjava.tio.http.server.annotation.RequestPath;

@@ -17,13 +17,7 @@ glic==2.28 or CentOS 8.4
 git clone https://github.com/litongjava/ai-server.git
 or
 #git clone https://gitee.com/ppnt/ai-server.git
-mvn install -DskipTests
-```
-whisper-asr-service会构建失败,不用理会,因为 whisper-asr-service依赖jdk 11,paddle-ocr-server并不依赖whisper-asr-service,保证paddle-ocr-service构建成功即可
-build paddle-ocr-server
-```
-cd paddle-ocr/paddle-ocr-server
-mvn package -DskipTests -Pproduction
+mvn clean deploy -pl paddle-ocr/paddle-ocr-server -DskipTests
 ```
 run
 ```

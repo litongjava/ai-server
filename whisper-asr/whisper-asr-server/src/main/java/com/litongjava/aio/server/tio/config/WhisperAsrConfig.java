@@ -4,7 +4,7 @@ import com.litongjava.ai.server.property.WhiserAsrProperties;
 import com.litongjava.jfinal.aop.Aop;
 import com.litongjava.jfinal.aop.annotation.Bean;
 import com.litongjava.jfinal.aop.annotation.Configuration;
-import com.litongjava.tio.boot.context.Enviorment;
+import com.litongjava.tio.boot.utils.Enviorment;
 
 import lombok.extern.slf4j.Slf4j;
 
