@@ -24,17 +24,23 @@ public class WhisperAsrController {
   private WhisperCppService whisperCppService = Aop.get(WhisperCppService.class);
 
   @RequestPath(value = "/rec")
-  public HttpResponse index(UploadFile file, String inputType, String outputType, HttpRequest request)
-      throws Exception {
-    Resp resp = null;
+  public HttpResponse index(UploadFile file, String inputType, String outputType, String outputFormat,
+      HttpRequest request) throws Exception {
     if (file != null) {
       Object data = whisperCppService.index(file.getData(), inputType, outputType);
-      resp = Resp.ok(data);
-    } else {
-      resp = Resp.fail("uplod file can't be null");
-    }
+      if ("txt".equals(outputFormat)) {
+        if (data instanceof String) {
+          return Resps.txt(request, (String) data);
+        }
 
-    return Resps.json(request, resp);
+      } else {
+        return Resps.json(request, Resp.ok(data));
+      }
+
+    } else {
+      return Resps.json(request, Resp.fail("uplod file can't be null"));
+    }
+    return Resps.json(request, Resp.fail("unknow error"));
 
   }
 
