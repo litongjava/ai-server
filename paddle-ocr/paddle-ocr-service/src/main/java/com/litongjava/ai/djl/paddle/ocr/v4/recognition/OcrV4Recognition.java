@@ -1,7 +1,6 @@
 package com.litongjava.ai.djl.paddle.ocr.v4.recognition;
 
 import java.awt.image.BufferedImage;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
