@@ -2,12 +2,12 @@ package com.litongjava.aio.server.tio.controller;
 
 import com.litongjava.jfinal.aop.Aop;
 import com.litongjava.jfinal.aop.annotation.Controller;
-import com.litongjava.tio.boot.annotation.EnableCORS;
-import com.litongjava.tio.boot.utils.Enviorment;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
+import com.litongjava.tio.http.server.annotation.EnableCORS;
 import com.litongjava.tio.http.server.annotation.RequestPath;
 import com.litongjava.tio.http.server.util.Resps;
+import com.litongjava.tio.utils.enviorment.EnviormentUtils;
 import com.litongjava.tio.utils.resp.Resp;
 
 @EnableCORS
@@ -16,9 +16,7 @@ import com.litongjava.tio.utils.resp.Resp;
 public class EnviormentController {
   @RequestPath("/{key}")
   public HttpResponse get(String key, HttpRequest request) {
-    Enviorment enviorment = Aop.get(Enviorment.class);
-    System.out.println(enviorment.toString());
-    return Resps.json(request, Resp.ok(enviorment.get(key)));
+    return Resps.json(request, Resp.ok(EnviormentUtils.get(key)));
   }
 
   @RequestPath("/beans")

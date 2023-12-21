@@ -1,4 +1,4 @@
-package com.litongjava.aio.server.tio.controller;
+package com.litongjava.ai.server.padddle.ocr.controller;
 
 import com.litongjava.jfinal.aop.annotation.Controller;
 import com.litongjava.tio.http.server.annotation.EnableCORS;
@@ -10,6 +10,6 @@ import com.litongjava.tio.http.server.annotation.RequestPath;
 public class IndexController {
   @RequestPath()
   public String respText() {
-    return "whisper-asr-server";
+    return "paddle-ocr-server";
   }
 }

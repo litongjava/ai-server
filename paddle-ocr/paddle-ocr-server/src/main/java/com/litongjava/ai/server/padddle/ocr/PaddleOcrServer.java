@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @ComponentScan
 @Slf4j
-public class OcrServer {
+public class PaddleOcrServer {
 
   public static void main(String[] args) throws Exception {
 
@@ -21,7 +21,7 @@ public class OcrServer {
       downloadAndTest();
     } else {
       long start = System.currentTimeMillis();
-      TioApplication.run(OcrServer.class, args);
+      TioApplication.run(PaddleOcrServer.class, args);
       long end = System.currentTimeMillis();
       System.out.println("started:" + (end - start) + "(ms)");
     }
