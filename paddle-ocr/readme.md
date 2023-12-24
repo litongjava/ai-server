@@ -17,7 +17,7 @@ glic==2.28 or CentOS 8.4
 git clone https://github.com/litongjava/ai-server.git
 or
 #git clone https://gitee.com/ppnt/ai-server.git
-mvn clean package -pl paddle-ocr/paddle-ocr-server -DskipTests
+mvn clean package -pl paddle-ocr/paddle-ocr-server -DskipTests -Pproduction
 ```
 run
 ```
