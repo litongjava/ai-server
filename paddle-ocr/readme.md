@@ -17,12 +17,19 @@ glic==2.28 or CentOS 8.4
 git clone https://github.com/litongjava/ai-server.git
 or
 #git clone https://gitee.com/ppnt/ai-server.git
-mvn clean deploy -pl paddle-ocr/paddle-ocr-server -DskipTests
+mvn clean package -pl paddle-ocr/paddle-ocr-server -DskipTests
 ```
 run
 ```
 java -jar java -jar paddle-ocr/paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
 ```
+
+## 库文件存储路径
+启动后默认会下载pytorch,djl-pytorch库文件存储路径
+```
+/user.dir/.djl.ai\pytorch
+```
+
 ## 接口文档
 
 ### 在线文档地址
