@@ -27,7 +27,11 @@ java -jar java -jar paddle-ocr/paddle-ocr-server/target/paddle-ocr-server-1.0.1.
 ## 库文件存储路径
 启动后默认会下载pytorch,djl-pytorch库文件存储路径
 ```
-/user.dir/.djl.ai\pytorch
+$HOME/.djl.ai/pytorch
+```
+如果下载太慢可以到下面的地址下载pytorch库
+```
+https://github.com/litongjava/djl-libs/releases/tag/pytorch
 ```
 
 ## 接口文档
