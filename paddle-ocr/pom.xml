@@ -10,5 +10,6 @@
   <modules>
     <module>paddle-ocr-server</module>
     <module>paddle-ocr-service</module>
+    <module>paddle-ocr-native-server</module>
   </modules>
 </project>

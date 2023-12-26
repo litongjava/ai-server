@@ -5,21 +5,20 @@
     <artifactId>paddle-ocr</artifactId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>paddle-ocr-server</artifactId>
-  <packaging>pom</packaging>
-  <version>1.0.3</version>
+  <artifactId>paddle-ocr-native-server</artifactId>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
+
     <graalvm.version>23.1.1</graalvm.version>
-    <tio.boot.version>1.2.8</tio.boot.version>
-    <lombok-version>1.18.30</lombok-version>
-    <hotswap-classloader.version>1.2.1</hotswap-classloader.version>
-    <final.name>ocr-server</final.name>
-    <main.class>com.litongjava.ai.server.padddle.ocr.PaddleOcrServer</main.class>
+    <mica-mqtt.version>2.2.6</mica-mqtt.version>
+    <mica-net.version>0.1.6</mica-net.version>
+    <tinylog.version>2.6.2</tinylog.version>
+    <mainClass.server>demo.DemoHttpServer</mainClass.server>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.litongjava</groupId>
@@ -28,69 +27,21 @@
     </dependency>
     <dependency>
       <groupId>com.litongjava</groupId>
-      <artifactId>tio-boot</artifactId>
-      <version>${tio.boot.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok-version}</version>
-      <optional>true</optional>
-      <scope>provided</scope>
+      <artifactId>tio-http-server</artifactId>
+      <version>3.7.3.v20231223-RELEASE</version>
     </dependency>
   </dependencies>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+  </build>
   <profiles>
-    <!-- 开发环境 -->
     <profile>
-      <id>development</id>
+      <id>jar</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
       <dependencies>
-        <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-          <version>1.2.3</version>
-        </dependency>
-      </dependencies>
-    </profile>
-
-    <!-- 生产环境 -->
-    <profile>
-      <id>production</id>
-      <dependencies>
-        <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-          <version>1.2.3</version>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>2.7.4</version>
-            <configuration>
-              <mainClass>${main.class}</mainClass>
-              <excludeGroupIds>org.projectlombok</excludeGroupIds>
-            </configuration>
-            <!-- 设置执行目标 -->
-            <executions>
-              <execution>
-                <goals>
-                  <goal>repackage</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <!-- assembly -->
-    <profile>
-      <id>assembly</id>
-      <dependencies>
+        <!-- 非 GraalVM 环境用 logback -->
         <dependency>
           <groupId>ch.qos.logback</groupId>
           <artifactId>logback-classic</artifactId>
@@ -111,7 +62,7 @@
             <configuration>
               <archive>
                 <manifest>
-                  <mainClass>${main.class}</mainClass>
+                  <mainClass>${mainClass.server}</mainClass>
                 </manifest>
               </archive>
               <descriptorRefs>
@@ -133,7 +84,7 @@
       </build>
     </profile>
     <profile>
-      <id>native</id>
+      <id>server-graalvm</id>
       <dependencies>
         <!-- GraalVM 环境使用 jdk log -->
         <dependency>
@@ -150,7 +101,7 @@
         </dependency>
       </dependencies>
       <build>
-        <finalName>${final.name}</finalName>
+        <finalName>tio-http-server-graal</finalName>
         <plugins>
           <plugin>
             <groupId>org.graalvm.nativeimage</groupId>
@@ -166,13 +117,13 @@
             </executions>
             <configuration>
               <skip>false</skip>
-              <imageName>${project.build.finalName}</imageName>
-              <mainClass>${main.class}</mainClass>
+              <imageName>${project.artifactId}</imageName>
+              <mainClass>${mainClass.server}</mainClass>
               <buildArgs>
-              -H:+RemoveSaturatedTypeFlows
-              --allow-incomplete-classpath
-              --no-fallback
-            </buildArgs>
+                -H:+RemoveSaturatedTypeFlows
+                --allow-incomplete-classpath
+                --no-fallback
+              </buildArgs>
             </configuration>
           </plugin>
         </plugins>
