@@ -13,10 +13,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <graalvm.version>23.1.1</graalvm.version>
-    <mica-mqtt.version>2.2.6</mica-mqtt.version>
-    <mica-net.version>0.1.6</mica-net.version>
-    <tinylog.version>2.6.2</tinylog.version>
-    <mainClass.server>demo.DemoHttpServer</mainClass.server>
+    <mainClass.server>com.litongjava.ai.server.padddle.ocr.PaddleOcrNativeServer</mainClass.server>
   </properties>
 
   <dependencies>
