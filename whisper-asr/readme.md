@@ -107,25 +107,16 @@ ffmpeg -i input.mp4 -ar 16000 -ac 1 -c:a pcm_s16le output.wav
 build
 
 ```
-docker build -f docker/1.0.1-base.en -t litongjava/whisper-asr-server:1.0.1-base.en .
-docker push litongjava/whisper-asr-server:1.0.1-base.en
+docker build -f docker/1.0.1 -t litongjava/whisper-asr-server:1.0.1 .
 ```
 
 run
 
 ```
-docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.1-base.en
+docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.1
 ```
 
 test
 ```
 curl -v http://localhost:8080/whispser/asr/test
-```
-build large
-```
-docker build -f docker/1.0.1-large -t litongjava/whisper-asr-server:1.0.1-large .
-```
-
-```
-docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.1-large
 ```
