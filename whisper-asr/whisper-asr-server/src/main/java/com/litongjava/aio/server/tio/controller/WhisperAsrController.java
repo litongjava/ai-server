@@ -6,7 +6,6 @@ import java.util.List;
 import com.litongjava.ai.server.model.WhisperSegment;
 import com.litongjava.ai.server.service.WhisperCppService;
 import com.litongjava.jfinal.aop.Aop;
-import com.litongjava.jfinal.aop.annotation.Controller;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
 import com.litongjava.tio.http.common.UploadFile;
@@ -18,7 +17,6 @@ import com.litongjava.tio.utils.resp.Resp;
 import cn.hutool.core.util.ClassUtil;
 
 @EnableCORS
-@Controller
 @RequestPath("/whispser/asr")
 public class WhisperAsrController {
   private WhisperCppService whisperCppService = Aop.get(WhisperCppService.class);

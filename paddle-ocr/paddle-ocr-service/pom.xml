@@ -68,11 +68,42 @@
       <version>${djl.version}</version>
       <scope>runtime</scope>
     </dependency>
+
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-jni</artifactId>
+      <version>1.13.1-0.25.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ai.djl.pytorch</groupId>
+      <artifactId>pytorch-native-cu117</artifactId>
+      <classifier>win-x86_64</classifier>
+      <version>1.13.1</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <!-- ONNX -->
     <dependency>
       <groupId>ai.djl.onnxruntime</groupId>
       <artifactId>onnxruntime-engine</artifactId>
       <version>${djl.version}</version>
+      <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>com.microsoft.onnxruntime</groupId>
+          <artifactId>onnxruntime</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.microsoft.onnxruntime</groupId>
+      <artifactId>onnxruntime_gpu</artifactId>
+      <version>1.14.0</version>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>

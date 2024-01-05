@@ -72,12 +72,12 @@ export JAVA_HOME=/usr/java/jdk-11.0.8
 export PATH=$JAVA_HOME/bin:$PATH
 
 #build jar
-mvn clean install -DskipTests -Pdevelopment
-mvn clean package -DskipTests -Pproduction -pl whisper-asr-server
+mvn clean install -DskipTests -Dgpg.skip -Pdevelopment
+mvn clean package -DskipTests -Dgpg.skip -Pproduction -pl whisper-asr-server
 ```
 ### run
 ```
-java -jar whisper-asr-server/target/whisper-asr-server-1.0.0.jar
+java -jar whisper-asr-server/target/whisper-asr-server-1.0.1.jar
 ```
 The default loaded model is `/root/.cache/whisper/ggml-base.en.bin`
 downlaod model form huggingface https://huggingface.co/ggerganov/whisper.cpp
@@ -85,7 +85,7 @@ downlaod model form huggingface https://huggingface.co/ggerganov/whisper.cpp
 
 specify the model name
 ```
-java -jar whisper-asr-server/target/whisper-asr-server-1.0.0.jar --model.name=ggml-large.bin
+java -jar whisper-asr-server/target/whisper-asr-server-1.0.1.jar --model.name=ggml-large.bin
 ```
 
 ### convert file with ffmpeg
@@ -106,14 +106,14 @@ ffmpeg -i input.mp4 -ar 16000 -ac 1 -c:a pcm_s16le output.wav
 build
 
 ```
-docker build -f docker/1.0.0-base.en -t litongjava/whisper-asr-server:1.0.0-base.en .
-docker push litongjava/whisper-asr-server:1.0.0-base.en
+docker build -f docker/1.0.1-base.en -t litongjava/whisper-asr-server:1.0.1-base.en .
+docker push litongjava/whisper-asr-server:1.0.1-base.en
 ```
 
 run
 
 ```
-docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.0-base.en
+docker run -dit -p 8080:80 litongjava/whisper-asr-server:1.0.1-base.en
 ```
 
 test
@@ -122,9 +122,9 @@ curl -v http://localhost:8080/whispser/asr/test
 ```
 build large
 ```
-docker build -f docker/1.0.0-large -t litongjava/whisper-asr-server:1.0.0-large .
+docker build -f docker/1.0.1-large -t litongjava/whisper-asr-server:1.0.1-large .
 ```
 
 ```
-docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.0-large
+docker run -dit -p 10046:10046 litongjava/whisper-asr-server:1.0.1-large
 ```

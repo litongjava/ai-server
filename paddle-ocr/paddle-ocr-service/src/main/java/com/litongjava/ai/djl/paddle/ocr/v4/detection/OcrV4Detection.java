@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ConcurrentHashMap;
 
+import ai.djl.Device;
 import ai.djl.modality.cv.Image;
 import ai.djl.ndarray.NDList;
 import ai.djl.repository.zoo.Criteria;
@@ -31,9 +32,15 @@ public final class OcrV4Detection {
       System.err.println(e.getMessage());
     }
 
-    Builder<Image, NDList> builder = Criteria.builder().optEngine("OnnxRuntime")
+    Device device = Device.gpu();
+    Builder<Image, NDList> builder = Criteria.builder()
+        //engine
+        .optEngine("OnnxRuntime")
+        //.optEngine("PyTorch")
+        
         // .optModelName("inference")
         .setTypes(Image.class, NDList.class)
+        .optDevice(device)
         .optTranslator(new OCRDetectionTranslator(new ConcurrentHashMap<String, String>()))
         .optProgress(new ProgressBar());
 

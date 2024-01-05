@@ -16,7 +16,7 @@
     <hutool.version>5.8.11</hutool.version>
     <whisper.jni.version>1.5.1-java8</whisper.jni.version>
     <mp3spi.version>1.9.5.4</mp3spi.version>
-    <jfinal.aop.version>1.1.2</jfinal.aop.version>
+    <jfinal.aop.version>1.1.8</jfinal.aop.version>
   </properties>
   <dependencies>
     <dependency>

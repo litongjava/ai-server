@@ -41,17 +41,17 @@ public final class OcrV4RecExample {
   }
 
   public static void main(String[] args) throws IOException, ModelException, TranslateException {
-    //IDEA
-    Path imageFile = Paths.get("src/test/resources/2.jpg");
+    // IDEA
+    Path imageFile = Paths.get("E:\\code\\python\\project-litongjava\\cyg-v2\\img.png");
     Image image = OpenCVImageFactory.getInstance().fromFile(imageFile);
 
     OcrV4Detection detection = new OcrV4Detection();
     OcrV4Recognition recognition = new OcrV4Recognition();
     try (ZooModel detectionModel = ModelZoo.loadModel(detection.chDetCriteria());
-         Predictor<Image, NDList> detector = detectionModel.newPredictor();
-         ZooModel recognitionModel = ModelZoo.loadModel(recognition.chRecCriteria());
-         Predictor<Image, String> recognizer = recognitionModel.newPredictor();
-         NDManager manager = NDManager.newBaseManager()) {
+        Predictor<Image, NDList> detector = detectionModel.newPredictor();
+        ZooModel recognitionModel = ModelZoo.loadModel(recognition.chRecCriteria());
+        Predictor<Image, String> recognizer = recognitionModel.newPredictor();
+        NDManager manager = NDManager.newBaseManager()) {
 
       long timeInferStart = System.currentTimeMillis();
       List<RotatedBox> detections = recognition.predict(manager, image, detector, recognizer);
@@ -72,33 +72,38 @@ public final class OcrV4RecExample {
       // Reorder the detection results based on the coordinate positions, from top to bottom, from left to right. The algorithm below is suitable for situations where the image is slightly tilted or rotated.
       // If the image rotation angle is large, the algorithm needs to be improved, and the position needs to be calculated based on the slope correction.
       List<RotatedBox> initList = new ArrayList<>();
-      for (RotatedBox result : detections) {
-        // put low Y value at the head of the queue.
-        initList.add(result);
+      if (detections != null) {
+        for (RotatedBox result : detections) {
+          // put low Y value at the head of the queue.
+          initList.add(result);
+        }
       }
+
       Collections.sort(initList);
 
       List<ArrayList<RotatedBoxCompX>> lines = new ArrayList<>();
       List<RotatedBoxCompX> line = new ArrayList<>();
-      RotatedBoxCompX firstBox = new RotatedBoxCompX(initList.get(0).getBox(), initList.get(0).getText());
-      line.add(firstBox);
-      lines.add((ArrayList) line);
-      for (int i = 1; i < initList.size(); i++) {
-        RotatedBoxCompX tmpBox = new RotatedBoxCompX(initList.get(i).getBox(), initList.get(i).getText());
-        float y1 = firstBox.getBox().toFloatArray()[1];
-        float y2 = tmpBox.getBox().toFloatArray()[1];
-        float dis = Math.abs(y2 - y1);
-        if (dis < 20) { // 认为是同 1 行  - Considered to be in the same line
-          line.add(tmpBox);
-        } else { // 换行 - Line break
-          firstBox = tmpBox;
-          Collections.sort(line);
-          line = new ArrayList<>();
-          line.add(firstBox);
-          lines.add((ArrayList) line);
+      if (initList.size() > 0) {
+        RotatedBoxCompX firstBox = new RotatedBoxCompX(initList.get(0).getBox(), initList.get(0).getText());
+        line.add(firstBox);
+        lines.add((ArrayList) line);
+        for (int i = 1; i < initList.size(); i++) {
+          RotatedBoxCompX tmpBox = new RotatedBoxCompX(initList.get(i).getBox(), initList.get(i).getText());
+          float y1 = firstBox.getBox().toFloatArray()[1];
+          float y2 = tmpBox.getBox().toFloatArray()[1];
+          float dis = Math.abs(y2 - y1);
+          if (dis < 20) { // 认为是同 1 行 - Considered to be in the same line
+            line.add(tmpBox);
+          } else { // 换行 - Line break
+            firstBox = tmpBox;
+            Collections.sort(line);
+            line = new ArrayList<>();
+            line.add(firstBox);
+            lines.add((ArrayList) line);
+          }
         }
       }
-
+      
 
       String fullText = "";
       for (int i = 0; i < lines.size(); i++) {
@@ -112,7 +117,6 @@ public final class OcrV4RecExample {
       }
 
       System.out.println(fullText);
-
 
       // 转 BufferedImage 解决 Imgproc.putText 中文乱码问题
       Mat wrappedImage = (Mat) image.getWrappedImage();

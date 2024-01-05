@@ -1,9 +1,9 @@
 package com.litongjava.aio.server.tio;
 
-import com.litongjava.jfinal.aop.annotation.ComponentScan;
+import com.litongjava.jfinal.aop.annotation.AComponentScan;
 import com.litongjava.tio.boot.TioApplication;
 
-@ComponentScan
+@AComponentScan
 public class WhisperAsrServer {
 
   public static void main(String[] args) throws Exception {

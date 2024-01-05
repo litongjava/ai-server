@@ -11,13 +11,15 @@ public class PaddlePaddleOCRV4Test {
   public void test() {
     String url = "https://resources.djl.ai/images/flight_ticket.jpg";
     String text = null;
-    try {
-      text = PaddlePaddleOCRV4.INSTANCE.ocr(url);
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    for (int i = 0; i < 100; i++) {
+      try {
+        text = PaddlePaddleOCRV4.INSTANCE.ocr(url);
+      } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      log.info("text:{}", text);
     }
-    log.info("text:{}", text);
   }
 
 }

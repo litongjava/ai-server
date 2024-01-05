@@ -2,7 +2,6 @@ package com.litongjava.ai.server.padddle.ocr;
 
 import java.io.IOException;
 
-import com.litongjava.ai.djl.paddle.ocr.v4.PaddlePaddleOCRV4;
 import com.litongjava.tio.http.common.HttpConfig;
 import com.litongjava.tio.http.common.handler.HttpRequestHandler;
 import com.litongjava.tio.http.server.HttpServerStarter;
@@ -15,7 +14,6 @@ public class PaddleOcrNativeServer {
   public static void main(String[] args) throws IOException {
 
     // init ocr
-    PaddlePaddleOCRV4.INSTANCE.init();
     // 实例化Controller
     IndexController controller = new IndexController();
     PaddleOcrController paddleOcrController = new PaddleOcrController();

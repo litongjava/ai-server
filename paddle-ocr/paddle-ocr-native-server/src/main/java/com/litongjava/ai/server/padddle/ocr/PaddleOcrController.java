@@ -2,7 +2,6 @@ package com.litongjava.ai.server.padddle.ocr;
 
 import java.net.URL;
 
-import com.litongjava.ai.djl.paddle.ocr.v4.PaddlePaddleOCRV4;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
 import com.litongjava.tio.http.common.UploadFile;
@@ -21,10 +20,10 @@ public class PaddleOcrController {
     UploadFile file = request.getUploadFile("file");
     String text = null;
     if (url != null) {
-      text = PaddlePaddleOCRV4.INSTANCE.ocr(url);
+      text = PaddlePaddleOCRNativeV4.INSTANCE.ocr(url);
     } else if (file != null) {
       byte[] fileData = file.getData();
-      text = PaddlePaddleOCRV4.INSTANCE.ocr(fileData);
+      text = PaddlePaddleOCRNativeV4.INSTANCE.ocr(fileData);
     }
     if (text != null) {
       return Resps.json(request, RespVo.ok(text));
@@ -36,7 +35,7 @@ public class PaddleOcrController {
   // @RequestPath("/test")
   public HttpResponse test(HttpRequest request) throws Exception {
     URL resource = ResourceUtil.getResource("images/flight_ticket.jpg");
-    return Resps.json(request, RespVo.ok(PaddlePaddleOCRV4.INSTANCE.ocr(resource)));
+    return Resps.json(request, RespVo.ok(PaddlePaddleOCRNativeV4.INSTANCE.ocr(resource)));
   }
 
 }

@@ -1,0 +1,9 @@
+FROM openjdk:11-jdk-slim
+
+WORKDIR /app
+
+COPY ./target/whisper-asr-server-1.0.0.jar /app/
+
+COPY models/ggml-base.en.bin /root/.cache/whisper/ggml-base.en.bin
+
+CMD ["java", "-jar", "whisper-asr-server-1.0.0.jar"]

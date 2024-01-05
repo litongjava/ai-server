@@ -14,6 +14,7 @@ import com.litongjava.ai.djl.paddle.ocr.v4.common.RotatedBox;
 import com.litongjava.ai.djl.paddle.ocr.v4.opencv.NDArrayUtils;
 import com.litongjava.ai.djl.paddle.ocr.v4.opencv.OpenCVUtils;
 
+import ai.djl.Device;
 import ai.djl.inference.Predictor;
 import ai.djl.modality.cv.Image;
 import ai.djl.modality.cv.ImageFactory;
@@ -49,8 +50,15 @@ public final class OcrV4Recognition {
       System.err.println(e.getMessage());
     }
 
-    Builder<Image, String> builder = Criteria.builder().optEngine("OnnxRuntime")
+    Device device = Device.gpu();
+    Builder<Image, String> builder = Criteria.builder()
+        // engine
+        .optEngine("OnnxRuntime")
+        // .optEngine("PyTorch")
         // .optModelName("inference")
+        // devices
+        .optDevice(device)
+        // type
         .setTypes(Image.class, String.class).optProgress(new ProgressBar())
         .optTranslator(new PpWordRecTranslator(new ConcurrentHashMap<String, String>()));
 

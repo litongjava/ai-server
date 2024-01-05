@@ -2,7 +2,6 @@ package com.litongjava.aio.server.tio.controller;
 
 import java.util.Properties;
 
-import com.litongjava.jfinal.aop.annotation.Controller;
 import com.litongjava.tio.http.common.HttpRequest;
 import com.litongjava.tio.http.common.HttpResponse;
 import com.litongjava.tio.http.server.annotation.EnableCORS;
@@ -15,7 +14,6 @@ import cn.hutool.system.RuntimeInfo;
 import cn.hutool.system.SystemUtil;
 
 @EnableCORS
-@Controller
 @RequestPath("/system")
 public class SystemController {
 
