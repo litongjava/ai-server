@@ -9,8 +9,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import com.litongjava.ai.server.enumeration.AudioType;
 import com.litongjava.ai.server.enumeration.TextType;
 import com.litongjava.ai.server.model.WhisperSegment;
-import com.litongjava.ai.server.single.LocalLargeWhisper;
-import com.litongjava.ai.server.single.LocalWhisper;
+import com.litongjava.ai.server.single.LocalBaseWhisper;
 import com.litongjava.ai.server.utils.Mp3Util;
 import com.litongjava.ai.server.utils.WhisperAudioUtils;
 import com.litongjava.jfinal.aop.Aop;
@@ -19,21 +18,21 @@ import io.github.givimad.whisperjni.WhisperFullParams;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 加载自定义配置的模型
+ * 使用Base模型
  * @author Tong Li
  *
  */
 @Slf4j
-public class WhisperCppService {
+public class WhisperCppBaseService {
   private TextService textService = Aop.get(TextService.class);
 
-  public List<WhisperSegment> index(URL url,WhisperFullParams params) {
+  public List<WhisperSegment> index(URL url, WhisperFullParams params) {
 
     try {
       float[] floats = WhisperAudioUtils.toAudioData(url);
       log.info("floats size:{}", floats.length);
 
-      List<WhisperSegment> segments = LocalWhisper.INSTANCE.fullTranscribeWithTime(floats, floats.length, params);
+      List<WhisperSegment> segments = LocalBaseWhisper.INSTANCE.fullTranscribeWithTime(floats, floats.length, params);
       log.info("size:{}", segments.size());
       return segments;
     } catch (UnsupportedAudioFileException | IOException e) {
@@ -46,21 +45,21 @@ public class WhisperCppService {
 
   public List<WhisperSegment> index(byte[] data, WhisperFullParams params) {
     float[] floats = WhisperAudioUtils.toFloat(data);
-    return LocalLargeWhisper.INSTANCE.fullTranscribeWithTime(floats, params);
+    return LocalBaseWhisper.INSTANCE.fullTranscribeWithTime(floats, params);
   }
 
-  public StringBuffer outputSrt(URL url,WhisperFullParams params) throws IOException {
-    List<WhisperSegment> segments = this.index(url,params);
+  public StringBuffer outputSrt(URL url, WhisperFullParams params) throws IOException {
+    List<WhisperSegment> segments = this.index(url, params);
     return textService.generateSrt(segments);
   }
 
-  public StringBuffer outputVtt(URL url,WhisperFullParams params) throws IOException {
-    List<WhisperSegment> segments = this.index(url,params);
+  public StringBuffer outputVtt(URL url, WhisperFullParams params) throws IOException {
+    List<WhisperSegment> segments = this.index(url, params);
     return textService.generateVtt(segments);
   }
 
-  public StringBuffer outputLrc(URL url,WhisperFullParams params) throws IOException {
-    List<WhisperSegment> segments = this.index(url,params);
+  public StringBuffer outputLrc(URL url, WhisperFullParams params) throws IOException {
+    List<WhisperSegment> segments = this.index(url, params);
     return textService.generateLrc(segments);
   }
 

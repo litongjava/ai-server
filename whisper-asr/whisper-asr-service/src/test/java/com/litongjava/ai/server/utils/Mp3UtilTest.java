@@ -31,7 +31,7 @@ public class Mp3UtilTest {
     Mp3Util mp3Util = new Mp3Util();
     byte[] wavData = mp3Util.convertToWav(mp3Data, 16000, 1);
     WhisperCppService whisperCppService = new WhisperCppService();
-    Object index = whisperCppService.index(wavData);
+    Object index = whisperCppService.index(wavData, null);
     System.out.println(index);
 
   }

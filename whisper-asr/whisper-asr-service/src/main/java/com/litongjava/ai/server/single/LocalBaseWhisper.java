@@ -17,14 +17,14 @@ import io.github.givimad.whisperjni.WhisperJNI;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public enum LocalLargeWhisper {
+public enum LocalBaseWhisper {
   INSTANCE;
 
   private ExecutorService executorService;
   private ThreadLocal<WhisperCppJni> threadLocalWhisper;
   private WhisperFullParams defaultPararams = new WhisperFullParams();
 
-  LocalLargeWhisper() {
+  LocalBaseWhisper() {
     try {
       WhisperJNI.loadLibrary();
     } catch (IOException e1) {
@@ -32,7 +32,7 @@ public enum LocalLargeWhisper {
     }
     // C:\Users\Administrator\.cache\whisper
     String userHome = System.getProperty("user.home");
-    String modelName = "ggml-large.bin";
+    String modelName = "ggml-base.en.bin";
     Path path = Paths.get(userHome, ".cache", "whisper", modelName);
 
     this.executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);

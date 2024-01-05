@@ -6,25 +6,25 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import com.litongjava.ai.server.model.WhisperSegment;
+import com.litongjava.ai.server.property.WhiserAsrProperties;
 import com.litongjava.ai.server.service.WhisperCppJni;
+import com.litongjava.ai.server.utils.WhisperExecutorServiceUtils;
+import com.litongjava.jfinal.aop.Aop;
 
 import io.github.givimad.whisperjni.WhisperFullParams;
 import io.github.givimad.whisperjni.WhisperJNI;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public enum LocalLargeWhisper {
+public enum LocalWhisper {
   INSTANCE;
 
-  private ExecutorService executorService;
   private ThreadLocal<WhisperCppJni> threadLocalWhisper;
   private WhisperFullParams defaultPararams = new WhisperFullParams();
 
-  LocalLargeWhisper() {
+  LocalWhisper() {
     try {
       WhisperJNI.loadLibrary();
     } catch (IOException e1) {
@@ -32,10 +32,9 @@ public enum LocalLargeWhisper {
     }
     // C:\Users\Administrator\.cache\whisper
     String userHome = System.getProperty("user.home");
-    String modelName = "ggml-large.bin";
+    String modelName = Aop.get(WhiserAsrProperties.class).getModelName();
     Path path = Paths.get(userHome, ".cache", "whisper", modelName);
 
-    this.executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() - 1);
     threadLocalWhisper = ThreadLocal.withInitial(() -> {
       WhisperCppJni whisper = new WhisperCppJni();
       try {
@@ -62,7 +61,7 @@ public enum LocalLargeWhisper {
     };
 
     try {
-      return executorService.submit(task).get();
+      return WhisperExecutorServiceUtils.submit(task).get();
     } catch (InterruptedException | ExecutionException e) {
       e.printStackTrace();
     }

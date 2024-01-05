@@ -8,7 +8,9 @@ WORKDIR /app
 
 # Copy the jar file into the container
 COPY ./target/whisper-asr-server-1.0.1.jar /app/
+COPY models/ggml-base.en.bin /root/.cache/whisper/ggml-base.en.bin
 COPY models/ggml-large.bin /root/.cache/whisper/ggml-large.bin
+
 
 # Command to run the jar file
 CMD ["java", "-jar", "whisper-asr-server-1.0.1.jar"]

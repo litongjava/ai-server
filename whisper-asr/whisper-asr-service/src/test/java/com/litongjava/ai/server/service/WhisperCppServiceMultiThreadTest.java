@@ -15,8 +15,8 @@ public class WhisperCppServiceMultiThreadTest {
     URL url = file.toURI().toURL();
     int availableProcessors = Runtime.getRuntime().availableProcessors();
     log.info("availableProcessors:{}", availableProcessors);
-    for (int i = 0; i < availableProcessors*2; i++) {
-      whisperCppService.index(url);
+    for (int i = 0; i < availableProcessors * 2; i++) {
+      whisperCppService.index(url, null);
     }
 
   }
