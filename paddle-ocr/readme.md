@@ -12,16 +12,18 @@
 - paddle-ocr
 ## require
 glic==2.28 or CentOS 8.4
+
 ## How to build
 ```
 git clone https://github.com/litongjava/ai-server.git
 or
 #git clone https://gitee.com/ppnt/ai-server.git
-mvn clean package -pl paddle-ocr/paddle-ocr-server -DskipTests -Pproduction
+#set JAVA_HOME=D:\java\jdk1.8.0_121
+mvn clean package -pl paddle-ocr-server -DskipTests -Pproduction
 ```
 run
 ```
-java -jar java -jar paddle-ocr/paddle-ocr-server/target/paddle-ocr-server-1.0.1.jar
+java -jar paddle-ocr-server/target/paddle-ocr-server-1.0.4.jar
 ```
 
 ## 库文件存储路径
@@ -38,6 +40,7 @@ https://github.com/litongjava/djl-libs/releases/tag/pytorch
 
 ### 在线文档地址
 https://apifox.com/apidoc/shared-98cc5675-f1a3-4250-a940-cfe060854ef4
+
 #### 测试接口
 测试接口不需要上传文件,使用程序自带的文件进行识别,用于测试环境安装是否成功
 访问地址:http://localhost/paddle/ocr/test
