@@ -3,13 +3,13 @@ package com.litongjava.ai.server.padddle.ocr;
 import java.util.Arrays;
 
 import com.litongjava.ai.djl.paddle.ocr.v4.PaddlePaddleOCRV4;
-import com.litongjava.jfinal.aop.annotation.ComponentScan;
+import com.litongjava.jfinal.aop.annotation.AComponentScan;
 import com.litongjava.tio.boot.TioApplication;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import lombok.extern.slf4j.Slf4j;
 
-@ComponentScan
+@AComponentScan
 @Slf4j
 public class PaddleOcrServer {
 

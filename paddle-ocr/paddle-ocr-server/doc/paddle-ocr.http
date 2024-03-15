@@ -1,0 +1,2 @@
+curl --location --request POST 'http://localhost/paddle/ocr/rec' \
+--form 'file=@"E:\code\python\project-litongjava\cyg-v2\img.png"

@@ -14,7 +14,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <graalvm.version>23.1.1</graalvm.version>
-    <tio.boot.version>1.2.8</tio.boot.version>
+    <tio.boot.version>1.4.0</tio.boot.version>
     <lombok-version>1.18.30</lombok-version>
     <hotswap-classloader.version>1.2.1</hotswap-classloader.version>
     <final.name>ocr-server</final.name>
