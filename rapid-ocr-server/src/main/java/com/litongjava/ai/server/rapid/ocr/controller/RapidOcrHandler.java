@@ -29,10 +29,11 @@ public class RapidOcrHandler {
     if (uploadFile != null) {
       byte[] fileData = uploadFile.getData();
       String name = uploadFile.getName();
-      File file = new File(System.currentTimeMillis() + name);
+      File file = new File(System.currentTimeMillis() + "_" + name);
 
       FileUtil.writeBytes(fileData, file);
       runOcr = EngineInstance.runOcr(file.getAbsolutePath());
+      file.delete();
 
       if (runOcr != null) {
         if ("json".equals(responseFormat)) {

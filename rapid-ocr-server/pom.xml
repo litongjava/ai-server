@@ -13,7 +13,7 @@
     <lombok-version>1.18.30</lombok-version>
     <hotswap-classloader.version>1.2.1</hotswap-classloader.version>
     <final.name>ocr-server</final.name>
-    <main.class>com.litongjava.ai.server.padddle.ocr.PaddleOcrServer</main.class>
+    <main.class>com.litongjava.ai.server.rapid.ocr.RapidOcrServer</main.class>
   </properties>
   <dependencies>
 
